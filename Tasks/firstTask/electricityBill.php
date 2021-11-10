@@ -1,29 +1,31 @@
-<!-- <?php
+<?php
 // event if the form has been submitted
-if($_POST){
-    echo $_POST;
-};
 
-$message = "";
+$charges = "";
+$surcharge = "";
+$total = "";
+
 if ($_POST) {
     $one = $_POST['input1'];
-    $two = $_POST['input2'];
-    $three = $_POST['input3'];
-    if ($one>$two && $one>$three) {
-        $message = $one .' is the max num';
-    } elseif ($two>$one && $two>$three) {
-        $message = $two .' is the max num';
-    } else {
-        $message = $three .' is the max num';
+    if($one<=50){
+        $charges = $one * 0.50;
+    }elseif($one>50 and $one <= 150){
+        $charges = $one * 0.75;
+    }elseif($one>150 and $one <= 250){
+        $charges = $one * 1.20;
+    }elseif($one>250){
+        $charges = $one * 1.50;
     }
+    $surcharge = $charges * 0.2;
+    $total = $charges + $surcharge;
 }
-?> -->
+?>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Max Num</title>
+    <title>Even OR Odd Num</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,22 +40,24 @@ if ($_POST) {
             <div class="col-4 offset-4">
                 <div class="card ">
                     <div class="card-header text-center">
-                        <h4> Put your numbers </h1>
+                        <h4> Put your Electricity Units </h1>
                     </div>
                     <div class="card-body">
                         <form method="POST">
-                            <label for="product">First Num</label><br>
-                            <input type="text" name="input1" value="0" /><br>
-                            <label for="product">Second Num</label><br>
-                            <input type="text" name="input2" value="0" /><br>
-                            <label for="product">Third Num</label><br>
-                            <input type="text" name="input3" value="0" /><br><br>
+                            <label for="product">Electricity Units</label><br>
+                            <input type="text" name="input1" placeholder="Enter Num" autofocus/><br>
                             <input type="submit" name="submit" value="Submit" /><br><br>
                         <div class="alert alert-success">
-                            <h1 class="alert-heading text-center"> The Max </h1>
+                            <h1 class="alert-heading text-center"> Your Bill </h1>
                             <ul>
                                 <li>
-                                    Max Num is : <?= max($_POST['input1'],$_POST['input2'],$_POST['input3']) ?>
+                                    Your charges is : <?= $charges ?>
+                                </li>
+                                <li>
+                                A   n additional surcharge of 20% is added to the bill is : <?= $surcharge ?>
+                                </li>
+                                <li>
+                                    The Total is : <?= $total ?>
                                 </li>
                             </ul>
                         </div>
@@ -69,5 +73,4 @@ if ($_POST) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
 </html>

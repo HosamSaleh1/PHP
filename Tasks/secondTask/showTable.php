@@ -56,21 +56,37 @@ $users = [
 $table='<table class="table">
   <thead>
     <tr>';
-foreach($users as $key => $values){
-    foreach($values as $property => $value);
-    $table .= '<th scope="col">$value</th>';
-};
+foreach($users as $values){
+    foreach($values as $key => $value){
+    $table .= '<th scope="col">'. $key .'</th>';
+    };
+    break;
+}
     $table .= '</tr>
   </thead>
   <tbody>
     <tr>';
-    foreach($users as $key => $values){
-        foreach($values as $property => $value);
-        $table .= '<th scope="row">$value->property</th>';
-    };
-    $table .= '</tr>
-  </tbody>
-</table>'
+    foreach($users as $values){
+        foreach($values as $key => $value){
+            if($key == 'gender'){
+                foreach($key as $k => $v){
+                    if($v == 'm'){
+                        $table .= '<th scope="row">' . 'Male' . '</th>';
+                    }
+                    $table .= '<th scope="row">' . 'Female' . '</th>';
+                }
+            };
+            if($key == 'activities'){
+                foreach($key as $k => $v){
+                        $table .= '<th scope="row">' . $k = $v . '</th>';
+                }
+            };
+            $table .= '<th scope="row">' . $value -> $key . '</th>';
+    }
+}
+        $table .= '</tr>
+        </tbody>
+        </table>';
 
 ?>
 

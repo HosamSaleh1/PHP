@@ -14,14 +14,16 @@
       <div class="container text-center">
           <h3> Negative Or Positive</h3>
         <form class="form-group" method="post">
-            <input type="text" name="num" placeholder="Enter Your Number" /><br><br>
+            <input type="text" name="num" placeholder="Enter Your Number" autofocus/><br><br>
             <input type="submit" value="Submit" /><br><br>
             <div class="alert alert-success">
                 Your number is: <?php
-                if($_POST['num'] > 0){
-                  echo 'Positive';
-                }else{
-                  echo 'Negative';
+                if($_POST){
+                  if($_POST['num'] > 0){
+                    echo 'Positive';
+                  }else{
+                    echo 'Negative';
+                  }
                 }
                 ?>
             </div>
